@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://omc5wprj71nq"]
+[gd_scene load_steps=7 format=3 uid="uid://omc5wprj71nq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_pk6oq"]
 [ext_resource type="Texture2D" uid="uid://cms8xo6wyqksl" path="res://assets/fist.png" id="2_basuj"]
+[ext_resource type="Script" path="res://scripts/character_input.gd" id="3_77pyk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aylta"]
 atlas = ExtResource("2_basuj")
@@ -33,3 +34,6 @@ animation = &"new_animation"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -9)
 shape = SubResource("CapsuleShape2D_78m1u")
+
+[node name="CharacterInput" type="Node" parent="."]
+script = ExtResource("3_77pyk")
