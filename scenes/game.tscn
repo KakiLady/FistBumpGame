@@ -1,10 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://crms0grc7af72"]
+[gd_scene load_steps=4 format=3 uid="uid://crms0grc7af72"]
 
 [ext_resource type="PackedScene" uid="uid://omc5wprj71nq" path="res://scenes/player.tscn" id="1_fo55j"]
+[ext_resource type="Texture2D" uid="uid://4fip1siet6j3" path="res://assets/sleeve_red.png" id="2_33pmb"]
+[ext_resource type="Texture2D" uid="uid://dsodskk082c5u" path="res://assets/sleeve_blue.png" id="2_ppw7l"]
 
 [node name="Game" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_fo55j")]
-position = Vector2(74, 91)
+[node name="LeftFist" parent="." instance=ExtResource("1_fo55j")]
+position = Vector2(64, 369)
+sleeve_texture = ExtResource("2_ppw7l")
 
-[editable path="CharacterBody2D"]
+[node name="RightFist" parent="." instance=ExtResource("1_fo55j")]
+position = Vector2(1006, 371)
+is_left = false
+sleeve_texture = ExtResource("2_33pmb")
+
+[node name="sleeve" parent="RightFist/fist" index="0"]
+position = Vector2(-13, -3)
+
+[node name="CharacterInput" parent="RightFist" index="2"]
+device_id = 1
+
+[editable path="LeftFist"]
+[editable path="RightFist"]
