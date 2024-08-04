@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dhdckensidfs3"]
+
+[node name="fist_bump" type="Node"]
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 407.0
+offset_top = 274.0
+offset_right = 494.0
+offset_bottom = 297.0
+scale = Vector2(4, 4)
+text = "FIST BUMP!"

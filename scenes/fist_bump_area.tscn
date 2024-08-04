@@ -1,10 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://mavochiarlj"]
+[gd_scene load_steps=3 format=3 uid="uid://mavochiarlj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n7rt3"]
+[ext_resource type="Script" path="res://scripts/fist_bump_area.gd" id="1_oo56u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgcvn"]
+size = Vector2(36, 116)
 
 [node name="FistBumpArea" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("1_oo56u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_n7rt3")
+light_mask = 3
+visibility_layer = 3
+position = Vector2(8, 48)
+shape = SubResource("RectangleShape2D_tgcvn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.409
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
