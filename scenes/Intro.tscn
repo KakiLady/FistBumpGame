@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://bgcmbicrwu6ih"]
 
-[ext_resource type="Script" path="res://scripts/Intro.gd" id="1_0cngi"]
-[ext_resource type="Texture2D" uid="uid://bw51cxgos5d5v" path="res://assets/background.png" id="1_a7167"]
-[ext_resource type="Texture2D" uid="uid://cfbb4j0dkdqj3" path="res://assets/logo.png" id="2_b2cq4"]
-[ext_resource type="PackedScene" uid="uid://d3nqxc2ev4an2" path="res://scenes/bobbing_component.tscn" id="3_b01yf"]
-[ext_resource type="FontFile" uid="uid://bimw50i85oa4l" path="res://assets/PixelOperator8-Bold.ttf" id="4_mqogr"]
-[ext_resource type="PackedScene" uid="uid://cob8mn6q2e1qn" path="res://ceiling_light.tscn" id="6_imqkn"]
+[ext_resource type="Script" path="res://scripts/Intro.gd" id="1_csabl"]
+[ext_resource type="Texture2D" uid="uid://bw51cxgos5d5v" path="res://assets/background.png" id="2_tygvg"]
+[ext_resource type="Texture2D" uid="uid://cfbb4j0dkdqj3" path="res://assets/logo.png" id="3_eixci"]
+[ext_resource type="PackedScene" uid="uid://d3nqxc2ev4an2" path="res://scenes/bobbing_component.tscn" id="4_jaaxv"]
+[ext_resource type="FontFile" uid="uid://bimw50i85oa4l" path="res://assets/PixelOperator8-Bold.ttf" id="5_bk3cn"]
+[ext_resource type="PackedScene" uid="uid://cob8mn6q2e1qn" path="res://ceiling_light.tscn" id="6_rkteu"]
 
 [sub_resource type="Gradient" id="Gradient_ed1ek"]
 offsets = PackedFloat32Array(0.181818, 1)
@@ -24,11 +24,11 @@ metadata/_snap_enabled = true
 light_mode = 1
 
 [node name="Intro" type="Node2D"]
-script = ExtResource("1_0cngi")
+script = ExtResource("1_csabl")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
-texture = ExtResource("1_a7167")
+texture = ExtResource("2_tygvg")
 
 [node name="Overlay" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -41,16 +41,16 @@ texture = SubResource("GradientTexture2D_nuebh")
 [node name="Logo" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_yrvon")
 position = Vector2(960, 540)
-texture = ExtResource("2_b2cq4")
+texture = ExtResource("3_eixci")
 
-[node name="BobbingComponent" parent="Logo" instance=ExtResource("3_b01yf")]
+[node name="BobbingComponent" parent="Logo" instance=ExtResource("4_jaaxv")]
 
 [node name="Label" type="Label" parent="."]
 offset_left = 615.0
 offset_top = 770.0
 offset_right = 1245.0
 offset_bottom = 815.0
-theme_override_fonts/font = ExtResource("4_mqogr")
+theme_override_fonts/font = ExtResource("5_bk3cn")
 theme_override_font_sizes/font_size = 24
 text = "Press <Enter / Space>"
 horizontal_alignment = 1
@@ -61,13 +61,13 @@ offset_top = 1019.0
 offset_right = 1900.0
 offset_bottom = 1061.0
 theme_override_colors/font_color = Color(0.560784, 0.560784, 0.560784, 1)
-theme_override_fonts/font = ExtResource("4_mqogr")
+theme_override_fonts/font = ExtResource("5_bk3cn")
 theme_override_font_sizes/font_size = 16
 text = "Clara Morrissey
 Johannes König"
 horizontal_alignment = 2
 
-[node name="CeilingLight" parent="." instance=ExtResource("6_imqkn")]
+[node name="CeilingLight" parent="." instance=ExtResource("6_rkteu")]
 
 [node name="Date" type="Label" parent="."]
 offset_left = 15.0
@@ -75,7 +75,7 @@ offset_top = 1021.0
 offset_right = 645.0
 offset_bottom = 1063.0
 theme_override_colors/font_color = Color(0.560784, 0.560784, 0.560784, 1)
-theme_override_fonts/font = ExtResource("4_mqogr")
+theme_override_fonts/font = ExtResource("5_bk3cn")
 theme_override_font_sizes/font_size = 16
 text = "
 2024"
