@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dbr2dgynx2q2k"]
+[gd_scene load_steps=22 format=3 uid="uid://dbr2dgynx2q2k"]
 
 [ext_resource type="AudioStream" uid="uid://snxnoglwgwux" path="res://assets/soundeffects/fanfare.mp3" id="1_6dffn"]
 [ext_resource type="PackedScene" uid="uid://omc5wprj71nq" path="res://scenes/player.tscn" id="1_fo55j"]
@@ -10,7 +10,9 @@
 [ext_resource type="FontFile" uid="uid://bimw50i85oa4l" path="res://assets/PixelOperator8-Bold.ttf" id="6_mq541"]
 [ext_resource type="Texture2D" uid="uid://bw51cxgos5d5v" path="res://assets/background.png" id="8_7kvif"]
 [ext_resource type="Script" path="res://scripts/Button.gd" id="8_12pks"]
-[ext_resource type="PackedScene" path="res://ceiling_light.tscn" id="10_8tc24"]
+[ext_resource type="PackedScene" uid="uid://cob8mn6q2e1qn" path="res://ceiling_light.tscn" id="10_8tc24"]
+[ext_resource type="Texture2D" uid="uid://b1hicstbkg6ct" path="res://assets/wasd_input.png" id="12_afx7t"]
+[ext_resource type="Texture2D" uid="uid://qhthyx1gl1vt" path="res://assets/arrow_input.png" id="13_k6csl"]
 
 [sub_resource type="Animation" id="Animation_dvvf3"]
 length = 0.001
@@ -83,6 +85,9 @@ expand_margin_right = 18.0
 expand_margin_bottom = 18.0
 
 [sub_resource type="Environment" id="Environment_5bbj5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vks4a"]
+light_mode = 1
 
 [node name="Game" type="Node2D"]
 
@@ -184,6 +189,20 @@ environment = SubResource("Environment_5bbj5")
 color = Color(0.611765, 0.611765, 0.611765, 1)
 
 [node name="CeilingLight" parent="." instance=ExtResource("10_8tc24")]
+
+[node name="wasdInput" type="Sprite2D" parent="."]
+z_index = 2
+material = SubResource("CanvasItemMaterial_vks4a")
+position = Vector2(162, 951)
+scale = Vector2(2, 2)
+texture = ExtResource("12_afx7t")
+
+[node name="arrowsInput" type="Sprite2D" parent="."]
+z_index = 2
+material = SubResource("CanvasItemMaterial_vks4a")
+position = Vector2(1747, 951)
+scale = Vector2(2, 2)
+texture = ExtResource("13_k6csl")
 
 [connection signal="fist_bumped" from="LeftFist" to="FanfareSoundEffect" method="play_soundeffect"]
 [connection signal="fist_bumped" from="LeftFist" to="FistBumpSoundEffect" method="play_soundeffect"]
