@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=16 format=3 uid="uid://crms0grc7af72"]
-=======
-[gd_scene load_steps=18 format=3 uid="uid://crms0grc7af72"]
->>>>>>> Stashed changes
+[gd_scene load_steps=23 format=3 uid="uid://crms0grc7af72"]
 
 [ext_resource type="PackedScene" uid="uid://omc5wprj71nq" path="res://scenes/player.tscn" id="1_fo55j"]
 [ext_resource type="Texture2D" uid="uid://4fip1siet6j3" path="res://assets/sleeve_red.png" id="2_33pmb"]
@@ -10,14 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cjjbygl4arql7" path="res://assets/sleeve_blue_repeating.png" id="3_wf2re"]
 [ext_resource type="Texture2D" uid="uid://c6w7gxtar422r" path="res://assets/sleeve_red_repeating.png" id="4_2eg6v"]
 [ext_resource type="Script" path="res://scripts/fist_bumped_label.gd" id="4_ccsmm"]
-<<<<<<< Updated upstream
 [ext_resource type="FontFile" uid="uid://bimw50i85oa4l" path="res://assets/PixelOperator8-Bold.ttf" id="6_mq541"]
-[ext_resource type="Script" path="res://scripts/Button.gd" id="8_12pks"]
-=======
-[ext_resource type="FontFile" uid="uid://dkvggmpwsimdk" path="res://assets/PixelOperator8.ttf" id="4_dk5wd"]
 [ext_resource type="Texture2D" uid="uid://bw51cxgos5d5v" path="res://assets/background.png" id="8_7kvif"]
+[ext_resource type="Script" path="res://scripts/Button.gd" id="8_12pks"]
 [ext_resource type="Script" path="res://scripts/flickering_component.gd" id="9_1h2yx"]
->>>>>>> Stashed changes
 
 [sub_resource type="Animation" id="Animation_dvvf3"]
 length = 0.001
@@ -55,7 +47,6 @@ _data = {
 "pop_up_animation": SubResource("Animation_3n5yk")
 }
 
-<<<<<<< Updated upstream
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3l7s"]
 bg_color = Color(0.454902, 0.384314, 0.411765, 0.92549)
 border_width_left = 2
@@ -91,7 +82,7 @@ expand_margin_right = 18.0
 expand_margin_bottom = 18.0
 
 [sub_resource type="Environment" id="Environment_5bbj5"]
-=======
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wkl1e"]
 polygon = PackedVector2Array(0, 0, 600, 2.08165e-12, 600, -10, 2.08165e-12, -10)
 
@@ -127,7 +118,6 @@ tracks/0/keys = {
 _data = {
 "flicker": SubResource("Animation_le78g")
 }
->>>>>>> Stashed changes
 
 [node name="Game" type="Node2D"]
 
@@ -195,7 +185,6 @@ libraries = {
 "": SubResource("AnimationLibrary_0l50l")
 }
 
-<<<<<<< Updated upstream
 [node name="Button" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -221,7 +210,7 @@ script = ExtResource("8_12pks")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5bbj5")
-=======
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.611765, 0.611765, 0.611765, 1)
 
@@ -248,7 +237,6 @@ target_is_visible = false
 libraries = {
 "": SubResource("AnimationLibrary_8e733")
 }
->>>>>>> Stashed changes
 
 [connection signal="area_entered" from="LeftFist/fist/FistBumpArea" to="CanvasLayer/Control/Label" method="_on_fist_bump_area_area_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="CanvasLayer/Control/Button" method="_on_pressed"]

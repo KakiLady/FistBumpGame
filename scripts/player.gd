@@ -19,9 +19,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	if is_left: 
-		fist.scale.x = 1
+		scale.x *= 1
 	else: 
-		fist.scale.x = -1
+		scale.x *= -1
 	
 	sleeve.texture = sleeve_texture
 	endless_sleeve.set_texture(sleeve_texture_repeating)

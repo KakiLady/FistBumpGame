@@ -23,14 +23,13 @@ script = ExtResource("1_pk6oq")
 
 [node name="fist" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
-scale = Vector2(-1, 1)
 texture = ExtResource("2_basuj")
 
 [node name="sleeve" type="Sprite2D" parent="fist"]
 texture = ExtResource("3_ed4wp")
 
 [node name="FistBumpArea" parent="fist" instance=ExtResource("5_gywc0")]
-position = Vector2(68, -54)
+position = Vector2(49, -54)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
@@ -43,7 +42,7 @@ curve = SubResource("Curve2D_w1he8")
 script = ExtResource("6_m5w1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -9)
+position = Vector2(-6, -3)
 shape = SubResource("CapsuleShape2D_78m1u")
 
 [node name="CharacterInput" type="Node" parent="."]
