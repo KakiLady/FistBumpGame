@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4fip1siet6j3" path="res://assets/sleeve_red.png" id="2_33pmb"]
 [ext_resource type="Texture2D" uid="uid://dsodskk082c5u" path="res://assets/sleeve_blue.png" id="2_ppw7l"]
 [ext_resource type="Script" path="res://scripts/fist_bumped_label.gd" id="4_ccsmm"]
+[ext_resource type="FontFile" uid="uid://dkvggmpwsimdk" path="res://assets/PixelOperator8.ttf" id="4_dk5wd"]
 
 [sub_resource type="Animation" id="Animation_dvvf3"]
 length = 0.001
@@ -90,7 +91,9 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(0, 0.0156863, 0.0156863, 1)
+theme_override_fonts/font = ExtResource("4_dk5wd")
+theme_override_font_sizes/font_size = 32
 text = "You got bumped!"
 horizontal_alignment = 1
 script = ExtResource("4_ccsmm")
