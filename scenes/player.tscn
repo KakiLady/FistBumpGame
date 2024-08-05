@@ -32,8 +32,8 @@ texture = ExtResource("2_basuj")
 texture = ExtResource("3_ed4wp")
 
 [node name="FistBumpArea" parent="fist" instance=ExtResource("5_gywc0")]
-position = Vector2(46, -54)
-rotation = 3.14159
+position = Vector2(38, -50)
+rotation = 2.78205
 scale = Vector2(1, -1)
 
 [node name="EndlessSleeve" type="Path2D" parent="fist"]

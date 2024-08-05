@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/fist_bump_area.gd" id="1_oo56u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgcvn"]
-size = Vector2(36, 116)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ai3lj"]
+height = 84.0
 
 [node name="FistBumpArea" type="Area2D"]
 collision_layer = 2
@@ -13,8 +13,9 @@ script = ExtResource("1_oo56u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(8, 48)
-shape = SubResource("RectangleShape2D_tgcvn")
+position = Vector2(8, 37)
+rotation = -0.253073
+shape = SubResource("CapsuleShape2D_ai3lj")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.409

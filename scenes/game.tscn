@@ -1,18 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://dbr2dgynx2q2k"]
+[gd_scene load_steps=19 format=3 uid="uid://dbr2dgynx2q2k"]
 
 [ext_resource type="AudioStream" uid="uid://snxnoglwgwux" path="res://assets/soundeffects/fanfare.mp3" id="1_6dffn"]
 [ext_resource type="PackedScene" uid="uid://omc5wprj71nq" path="res://scenes/player.tscn" id="1_fo55j"]
 [ext_resource type="AudioStream" uid="uid://ra0j2bb646yf" path="res://assets/soundeffects/fist_bump.wav" id="1_x3m1f"]
 [ext_resource type="Texture2D" uid="uid://4fip1siet6j3" path="res://assets/sleeve_red.png" id="2_33pmb"]
 [ext_resource type="Script" path="res://scripts/soundeffect_player_2D.gd" id="2_34dsj"]
-[ext_resource type="Texture2D" uid="uid://dsodskk082c5u" path="res://assets/sleeve_blue.png" id="2_ppw7l"]
-[ext_resource type="Texture2D" uid="uid://cjjbygl4arql7" path="res://assets/sleeve_blue_repeating.png" id="3_wf2re"]
 [ext_resource type="Texture2D" uid="uid://c6w7gxtar422r" path="res://assets/sleeve_red_repeating.png" id="4_2eg6v"]
 [ext_resource type="Script" path="res://scripts/fist_bumped_label.gd" id="4_ccsmm"]
 [ext_resource type="FontFile" uid="uid://bimw50i85oa4l" path="res://assets/PixelOperator8-Bold.ttf" id="6_mq541"]
 [ext_resource type="Texture2D" uid="uid://bw51cxgos5d5v" path="res://assets/background.png" id="8_7kvif"]
 [ext_resource type="Script" path="res://scripts/Button.gd" id="8_12pks"]
-[ext_resource type="PackedScene" uid="uid://cob8mn6q2e1qn" path="res://ceiling_light.tscn" id="10_8tc24"]
+[ext_resource type="PackedScene" path="res://ceiling_light.tscn" id="10_8tc24"]
 
 [sub_resource type="Animation" id="Animation_dvvf3"]
 length = 0.001
@@ -104,8 +102,6 @@ texture = ExtResource("8_7kvif")
 [node name="LeftFist" parent="." instance=ExtResource("1_fo55j")]
 position = Vector2(120, 637)
 scale = Vector2(5, 5)
-sleeve_texture = ExtResource("2_ppw7l")
-sleeve_texture_repeating = ExtResource("3_wf2re")
 
 [node name="RightFist" parent="." instance=ExtResource("1_fo55j")]
 position = Vector2(1800, 637)
