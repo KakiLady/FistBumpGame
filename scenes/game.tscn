@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://crms0grc7af72"]
+[gd_scene load_steps=9 format=3 uid="uid://crms0grc7af72"]
 
 [ext_resource type="PackedScene" uid="uid://omc5wprj71nq" path="res://scenes/player.tscn" id="1_fo55j"]
 [ext_resource type="Texture2D" uid="uid://4fip1siet6j3" path="res://assets/sleeve_red.png" id="2_33pmb"]
 [ext_resource type="Texture2D" uid="uid://dsodskk082c5u" path="res://assets/sleeve_blue.png" id="2_ppw7l"]
 [ext_resource type="Script" path="res://scripts/fist_bumped_label.gd" id="4_ccsmm"]
+
+[sub_resource type="Animation" id="Animation_dvvf3"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_3n5yk"]
 resource_name = "pop_up_animation"
@@ -32,23 +35,24 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(2, 2), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_dvvf3"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0l50l"]
 _data = {
 "RESET": SubResource("Animation_dvvf3"),
 "pop_up_animation": SubResource("Animation_3n5yk")
 }
 
+[sub_resource type="Environment" id="Environment_5bbj5"]
+
 [node name="Game" type="Node2D"]
 
 [node name="LeftFist" parent="." instance=ExtResource("1_fo55j")]
-position = Vector2(64, 369)
+position = Vector2(120, 540)
+scale = Vector2(5, 5)
 sleeve_texture = ExtResource("2_ppw7l")
 
 [node name="RightFist" parent="." instance=ExtResource("1_fo55j")]
-position = Vector2(1006, 371)
+position = Vector2(1800, 540)
+scale = Vector2(5, 5)
 is_left = false
 sleeve_texture = ExtResource("2_33pmb")
 
@@ -61,6 +65,7 @@ device_id = 1
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -95,6 +100,9 @@ root_node = NodePath("../../../..")
 libraries = {
 "": SubResource("AnimationLibrary_0l50l")
 }
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5bbj5")
 
 [connection signal="area_entered" from="LeftFist/fist/FistBumpArea" to="CanvasLayer/Control/Label" method="_on_fist_bump_area_area_entered"]
 
