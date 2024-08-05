@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwb2vgflq64rf"]
+
+[ext_resource type="AudioStream" uid="uid://b41skenwvtw7d" path="res://assets/fistBumpMusic.mp3" id="1_dktkm"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_dktkm")
+autoplay = true
