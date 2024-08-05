@@ -9,7 +9,7 @@ func _ready():
 
 func _on_pressed():
 	
-	print("Let`s go!")
+
 	timer.start(0.5)
 	
 
