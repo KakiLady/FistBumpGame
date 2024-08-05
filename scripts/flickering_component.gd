@@ -8,6 +8,7 @@ var _timer: Timer
 @export var target_is_visible: bool = true
 
 @onready var target
+signal flicker
 
 func _ready():
 	target_is_visible = true
@@ -30,3 +31,4 @@ func _process(delta: float):
 
 func _flicker():
 	animation_player.play("flicker")
+	flicker.emit()

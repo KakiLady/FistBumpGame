@@ -14,7 +14,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var fist = $fist
 @onready var sleeve = $fist/sleeve
 @onready var endless_sleeve = $fist/EndlessSleeve
+signal fist_bumped
 
+var disabled_input: bool = false
 
 
 func _ready():
@@ -29,10 +31,11 @@ func _ready():
 	
 
 func _physics_process(delta):
-	# Add the gravity.
-	
-	var input = character_input.get_input()
 
+	if disabled_input:
+		return
+
+	var input = character_input.get_input()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 
@@ -40,3 +43,14 @@ func _physics_process(delta):
 
 	move_and_slide()
 	input.queue_free()
+
+
+func _on_fist_bump_area_area_entered(area):
+	fist_bumped.emit()
+	disable_input()
+
+func disable_input():
+	disabled_input = true
+
+func enable_input():
+	disabled_input = false

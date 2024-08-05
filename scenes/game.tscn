@@ -1,7 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://crms0grc7af72"]
+[gd_scene load_steps=21 format=3 uid="uid://dbr2dgynx2q2k"]
 
+[ext_resource type="AudioStream" uid="uid://snxnoglwgwux" path="res://assets/soundeffects/fanfare.mp3" id="1_6dffn"]
 [ext_resource type="PackedScene" uid="uid://omc5wprj71nq" path="res://scenes/player.tscn" id="1_fo55j"]
+[ext_resource type="AudioStream" uid="uid://ra0j2bb646yf" path="res://assets/soundeffects/fist_bump.wav" id="1_x3m1f"]
 [ext_resource type="Texture2D" uid="uid://4fip1siet6j3" path="res://assets/sleeve_red.png" id="2_33pmb"]
+[ext_resource type="Script" path="res://scripts/soundeffect_player_2D.gd" id="2_34dsj"]
 [ext_resource type="Texture2D" uid="uid://dsodskk082c5u" path="res://assets/sleeve_blue.png" id="2_ppw7l"]
 [ext_resource type="Texture2D" uid="uid://cjjbygl4arql7" path="res://assets/sleeve_blue_repeating.png" id="3_wf2re"]
 [ext_resource type="Texture2D" uid="uid://c6w7gxtar422r" path="res://assets/sleeve_red_repeating.png" id="4_2eg6v"]
@@ -9,7 +12,7 @@
 [ext_resource type="FontFile" uid="uid://bimw50i85oa4l" path="res://assets/PixelOperator8-Bold.ttf" id="6_mq541"]
 [ext_resource type="Texture2D" uid="uid://bw51cxgos5d5v" path="res://assets/background.png" id="8_7kvif"]
 [ext_resource type="Script" path="res://scripts/Button.gd" id="8_12pks"]
-[ext_resource type="Script" path="res://scripts/flickering_component.gd" id="9_1h2yx"]
+[ext_resource type="PackedScene" uid="uid://cob8mn6q2e1qn" path="res://ceiling_light.tscn" id="10_8tc24"]
 
 [sub_resource type="Animation" id="Animation_dvvf3"]
 length = 0.001
@@ -83,63 +86,33 @@ expand_margin_bottom = 18.0
 
 [sub_resource type="Environment" id="Environment_5bbj5"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wkl1e"]
-polygon = PackedVector2Array(0, 0, 600, 2.08165e-12, 600, -10, 2.08165e-12, -10)
-
-[sub_resource type="Gradient" id="Gradient_55mec"]
-colors = PackedColorArray(0.605274, 0.605274, 0.605274, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kmjhj"]
-gradient = SubResource("Gradient_55mec")
-width = 1300
-height = 1300
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0, 0.5)
-metadata/_snap_enabled = true
-
-[sub_resource type="Animation" id="Animation_le78g"]
-resource_name = "flicker"
-length = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:target_is_visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.148827),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8e733"]
-_data = {
-"flicker": SubResource("Animation_le78g")
-}
-
 [node name="Game" type="Node2D"]
+
+[node name="FanfareSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_6dffn")
+volume_db = 11.712
+script = ExtResource("2_34dsj")
+
+[node name="FistBumpSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_x3m1f")
+script = ExtResource("2_34dsj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("8_7kvif")
 
 [node name="LeftFist" parent="." instance=ExtResource("1_fo55j")]
-position = Vector2(120, 540)
+position = Vector2(120, 637)
 scale = Vector2(5, 5)
 sleeve_texture = ExtResource("2_ppw7l")
 sleeve_texture_repeating = ExtResource("3_wf2re")
 
 [node name="RightFist" parent="." instance=ExtResource("1_fo55j")]
-position = Vector2(1800, 540)
+position = Vector2(1800, 637)
 scale = Vector2(5, 5)
 is_left = false
 sleeve_texture = ExtResource("2_33pmb")
 sleeve_texture_repeating = ExtResource("4_2eg6v")
-
-[node name="sleeve" parent="RightFist/fist" index="0"]
-position = Vector2(-13, -3)
 
 [node name="CharacterInput" parent="RightFist" index="2"]
 device_id = 1
@@ -164,9 +137,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -354.0
+offset_left = -591.0
 offset_top = -29.0
-offset_right = -7.0
+offset_right = -13.0
 offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -214,30 +187,10 @@ environment = SubResource("Environment_5bbj5")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.611765, 0.611765, 0.611765, 1)
 
-[node name="CeilingLight" type="Node2D" parent="."]
+[node name="CeilingLight" parent="." instance=ExtResource("10_8tc24")]
 
-[node name="LightOccluder2DLeft" type="LightOccluder2D" parent="CeilingLight"]
-occluder = SubResource("OccluderPolygon2D_wkl1e")
-
-[node name="LightOccluder2DRight" type="LightOccluder2D" parent="CeilingLight"]
-position = Vector2(1320, 2.08165e-12)
-occluder = SubResource("OccluderPolygon2D_wkl1e")
-
-[node name="PointLight2D" type="PointLight2D" parent="CeilingLight"]
-position = Vector2(960, -1015)
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_kmjhj")
-texture_scale = 3.38
-
-[node name="FlickeringComponent" type="Node" parent="CeilingLight"]
-script = ExtResource("9_1h2yx")
-target_is_visible = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CeilingLight/FlickeringComponent"]
-libraries = {
-"": SubResource("AnimationLibrary_8e733")
-}
-
+[connection signal="fist_bumped" from="LeftFist" to="FanfareSoundEffect" method="play_soundeffect"]
+[connection signal="fist_bumped" from="LeftFist" to="FistBumpSoundEffect" method="play_soundeffect"]
 [connection signal="area_entered" from="LeftFist/fist/FistBumpArea" to="CanvasLayer/Control/Label" method="_on_fist_bump_area_area_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="CanvasLayer/Control/Button" method="_on_pressed"]
 
