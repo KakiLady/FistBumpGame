@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crms0grc7af72"]
+[gd_scene load_steps=16 format=3 uid="uid://crms0grc7af72"]
 
 [ext_resource type="PackedScene" uid="uid://omc5wprj71nq" path="res://scenes/player.tscn" id="1_fo55j"]
 [ext_resource type="Texture2D" uid="uid://4fip1siet6j3" path="res://assets/sleeve_red.png" id="2_33pmb"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cjjbygl4arql7" path="res://assets/sleeve_blue_repeating.png" id="3_wf2re"]
 [ext_resource type="Texture2D" uid="uid://c6w7gxtar422r" path="res://assets/sleeve_red_repeating.png" id="4_2eg6v"]
 [ext_resource type="Script" path="res://scripts/fist_bumped_label.gd" id="4_ccsmm"]
-[ext_resource type="FontFile" uid="uid://dkvggmpwsimdk" path="res://assets/PixelOperator8.ttf" id="4_dk5wd"]
+[ext_resource type="FontFile" uid="uid://bimw50i85oa4l" path="res://assets/PixelOperator8-Bold.ttf" id="6_mq541"]
+[ext_resource type="Script" path="res://scripts/Button.gd" id="8_12pks"]
 
 [sub_resource type="Animation" id="Animation_dvvf3"]
 length = 0.001
@@ -43,6 +44,40 @@ _data = {
 "RESET": SubResource("Animation_dvvf3"),
 "pop_up_animation": SubResource("Animation_3n5yk")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3l7s"]
+bg_color = Color(0.454902, 0.384314, 0.411765, 0.92549)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_detail = 12
+expand_margin_left = 18.0
+expand_margin_top = 18.0
+expand_margin_right = 18.0
+expand_margin_bottom = 18.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ipwt"]
+bg_color = Color(0.227125, 0.18478, 0.200706, 0.92549)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_left = 18.0
+expand_margin_top = 18.0
+expand_margin_right = 18.0
+expand_margin_bottom = 18.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h7vn"]
+bg_color = Color(0.191266, 0.154105, 0.168086, 0.92549)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_left = 18.0
+expand_margin_top = 18.0
+expand_margin_right = 18.0
+expand_margin_bottom = 18.0
 
 [sub_resource type="Environment" id="Environment_5bbj5"]
 
@@ -95,9 +130,9 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0, 0.0156863, 0.0156863, 1)
-theme_override_fonts/font = ExtResource("4_dk5wd")
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 0.956863, 0.964706, 1)
+theme_override_fonts/font = ExtResource("6_mq541")
+theme_override_font_sizes/font_size = 42
 text = "You got bumped!"
 horizontal_alignment = 1
 script = ExtResource("4_ccsmm")
@@ -108,10 +143,34 @@ libraries = {
 "": SubResource("AnimationLibrary_0l50l")
 }
 
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = 252.0
+offset_right = 74.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.964706, 0.960784, 1)
+theme_override_colors/font_pressed_color = Color(0.929412, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_mq541")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxFlat_b3l7s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2ipwt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0h7vn")
+text = "START"
+script = ExtResource("8_12pks")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5bbj5")
 
 [connection signal="area_entered" from="LeftFist/fist/FistBumpArea" to="CanvasLayer/Control/Label" method="_on_fist_bump_area_area_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="CanvasLayer/Control/Button" method="_on_pressed"]
 
 [editable path="LeftFist"]
 [editable path="RightFist"]
