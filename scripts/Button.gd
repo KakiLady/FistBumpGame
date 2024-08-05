@@ -8,8 +8,6 @@ func _ready():
 	timer.timeout.connect(_on_timer_timeout)
 
 func _on_pressed():
-	
-
 	timer.start(0.5)
 	
 
