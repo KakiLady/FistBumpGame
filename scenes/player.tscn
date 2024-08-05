@@ -1,10 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://omc5wprj71nq"]
+[gd_scene load_steps=9 format=3 uid="uid://omc5wprj71nq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_pk6oq"]
 [ext_resource type="Texture2D" uid="uid://cms8xo6wyqksl" path="res://assets/fist.png" id="2_basuj"]
 [ext_resource type="Script" path="res://scripts/character_input.gd" id="3_77pyk"]
 [ext_resource type="Texture2D" uid="uid://dsodskk082c5u" path="res://assets/sleeve_blue.png" id="3_ed4wp"]
 [ext_resource type="PackedScene" uid="uid://mavochiarlj" path="res://scenes/fist_bump_area.tscn" id="5_gywc0"]
+[ext_resource type="Script" path="res://scripts/endless_sleeve.gd" id="6_m5w1b"]
+
+[sub_resource type="Curve2D" id="Curve2D_w1he8"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 92, -6.00023, 0, 0, 0, 0, 567, -8.00144)
+}
+point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_78m1u"]
 radius = 60.0
@@ -25,6 +33,14 @@ texture = ExtResource("3_ed4wp")
 position = Vector2(68, -54)
 rotation = 3.14159
 scale = Vector2(1, -1)
+
+[node name="EndlessSleeve" type="Path2D" parent="fist"]
+z_index = 1
+position = Vector2(-25, 2)
+rotation = 3.14159
+scale = Vector2(1, -1)
+curve = SubResource("Curve2D_w1he8")
+script = ExtResource("6_m5w1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -9)
