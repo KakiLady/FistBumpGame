@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://omc5wprj71nq"]
+[gd_scene load_steps=10 format=3 uid="uid://omc5wprj71nq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_pk6oq"]
 [ext_resource type="Texture2D" uid="uid://cms8xo6wyqksl" path="res://assets/fist.png" id="2_basuj"]
 [ext_resource type="Script" path="res://scripts/character_input.gd" id="3_77pyk"]
 [ext_resource type="Texture2D" uid="uid://dsodskk082c5u" path="res://assets/sleeve_blue.png" id="3_ed4wp"]
+[ext_resource type="Texture2D" uid="uid://cjjbygl4arql7" path="res://assets/sleeve_blue_repeating.png" id="3_rrgrk"]
 [ext_resource type="PackedScene" uid="uid://mavochiarlj" path="res://scenes/fist_bump_area.tscn" id="5_gywc0"]
 [ext_resource type="Script" path="res://scripts/endless_sleeve.gd" id="6_m5w1b"]
 
 [sub_resource type="Curve2D" id="Curve2D_w1he8"]
 bake_interval = 10.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 92, -6.00023, 0, 0, 0, 0, 567, -8.00144)
+"points": PackedVector2Array(0, 0, 0, 0, 92, -6.00023, 0, 0, 0, 0, 567, -6)
 }
 point_count = 2
 
@@ -20,6 +21,8 @@ height = 120.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_pk6oq")
+sleeve_texture = ExtResource("3_ed4wp")
+sleeve_texture_repeating = ExtResource("3_rrgrk")
 
 [node name="fist" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
@@ -29,21 +32,23 @@ texture = ExtResource("2_basuj")
 texture = ExtResource("3_ed4wp")
 
 [node name="FistBumpArea" parent="fist" instance=ExtResource("5_gywc0")]
-position = Vector2(49, -54)
+position = Vector2(46, -54)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="EndlessSleeve" type="Path2D" parent="fist"]
 z_index = 1
-position = Vector2(-25, 2)
+position = Vector2(-25, 5.56)
 rotation = 3.14159
 scale = Vector2(1, -1)
 curve = SubResource("Curve2D_w1he8")
 script = ExtResource("6_m5w1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-6, -3)
+position = Vector2(-9, -2)
 shape = SubResource("CapsuleShape2D_78m1u")
 
 [node name="CharacterInput" type="Node" parent="."]
 script = ExtResource("3_77pyk")
+
+[connection signal="area_entered" from="fist/FistBumpArea" to="." method="_on_fist_bump_area_area_entered"]

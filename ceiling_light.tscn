@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://cob8mn6q2e1qn"]
+
+[ext_resource type="Script" path="res://scripts/flickering_component.gd" id="1_nxg3o"]
+[ext_resource type="AudioStream" uid="uid://bn6667w2rom2m" path="res://assets/soundeffects/light_flickering_1.wav" id="2_ky1vm"]
+[ext_resource type="AudioStream" uid="uid://cop6kw1in2t0v" path="res://assets/soundeffects/light_flickering_2.wav" id="3_t4jyo"]
+[ext_resource type="AudioStream" uid="uid://7v8r5yvv2qn2" path="res://assets/soundeffects/light_flickering_3.wav" id="4_q57ug"]
+[ext_resource type="Script" path="res://scripts/soundeffect_player_2D.gd" id="5_o0avg"]
+[ext_resource type="AudioStream" uid="uid://dtduawf28afg6" path="res://assets/soundeffects/light_static.wav" id="6_b56cs"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wkl1e"]
+polygon = PackedVector2Array(0, 0, 600, 2.08165e-12, 600, -10, 2.08165e-12, -10)
+
+[sub_resource type="Gradient" id="Gradient_55mec"]
+colors = PackedColorArray(0.605274, 0.605274, 0.605274, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kmjhj"]
+gradient = SubResource("Gradient_55mec")
+width = 1300
+height = 1300
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_le78g"]
+resource_name = "flicker"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:target_is_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.148827),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8e733"]
+_data = {
+"flicker": SubResource("Animation_le78g")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_grgh8"]
+streams_count = 3
+stream_0/stream = ExtResource("2_ky1vm")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_t4jyo")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("4_q57ug")
+stream_2/weight = 1.0
+
+[node name="CeilingLight" type="Node2D"]
+
+[node name="LightOccluder2DLeft" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_wkl1e")
+
+[node name="LightOccluder2DRight" type="LightOccluder2D" parent="."]
+position = Vector2(1320, 2.08165e-12)
+occluder = SubResource("OccluderPolygon2D_wkl1e")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(960, -1015)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_kmjhj")
+texture_scale = 3.38
+
+[node name="FlickeringComponent" type="Node" parent="."]
+script = ExtResource("1_nxg3o")
+target_is_visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FlickeringComponent"]
+libraries = {
+"": SubResource("AnimationLibrary_8e733")
+}
+
+[node name="SoundeffectPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_grgh8")
+volume_db = -5.0
+script = ExtResource("5_o0avg")
+
+[node name="StaticSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_b56cs")
+volume_db = -15.0
+autoplay = true
+script = ExtResource("5_o0avg")
+
+[connection signal="flicker" from="FlickeringComponent" to="SoundeffectPlayer2D" method="play_soundeffect"]

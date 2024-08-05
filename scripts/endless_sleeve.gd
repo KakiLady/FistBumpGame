@@ -31,6 +31,7 @@ func _process(delta):
 	if nr_of_sprites < nr_of_baked_points:
 		for i in range(nr_of_sprites, nr_of_baked_points):
 			var sprite = Sprite2D.new()
+			sprite.position = baked_points[i]
 			add_child(sprite)
 			sprites.append(sprite)
 			if texture:
